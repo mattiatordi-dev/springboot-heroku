@@ -10,12 +10,13 @@
 		<!-- 		<class>"it.corsojava.jpa.model.Cliente"</class>	 -->
 		<properties>
 			<!-- properties per la connessione al database -->
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.cj.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/corso_java?serverTimezone=CET" />
+				value="jdbc:mysql://localhost:3306/stageJava?serverTimezone=CET" />
 			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.password" value="tottea" />
+			<property name="javax.persistence.jdbc.password" value="root" />
 
 			<!-- SQL dialect -->
 			<property name="hibernate.dialect"
