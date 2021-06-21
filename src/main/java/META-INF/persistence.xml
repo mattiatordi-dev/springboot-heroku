@@ -21,6 +21,7 @@
 			<!-- SQL dialect -->
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.MySQL8Dialect" />
+				<property name="hibernate.globally_quoted_identifiers" value="true"/>
 
 			<!-- Visualizzazione dei comandi SQL generati -->
 			<property name="hibernate.format_sql" value="true" />

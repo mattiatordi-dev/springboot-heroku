@@ -31,11 +31,18 @@ public class Utente {
     @Column
     private String password;
 	
-	
 	public Utente() {
 		super();
 	}
 	
+	public Utente(int id,String nome, String cognome, String data_nascita) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.data_nascita = data_nascita;
+	}
+
 	public Utente(int id, String nome, String cognome, String data_nascita, boolean ruolo_admin) {
 		super();
 		this.id = id;
@@ -44,8 +51,26 @@ public class Utente {
 		this.data_nascita = data_nascita;
 		this.ruolo_admin = ruolo_admin;
 	}
+	
 
+	public Utente(int id, String nome, String cognome, String data_nascita, String password) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.data_nascita = data_nascita;
+		this.password = password;
+	}
 
+	public Utente(int id, String nome, String cognome, String data_nascita, boolean ruolo_admin, String password) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.data_nascita = data_nascita;
+		this.ruolo_admin = ruolo_admin;
+		this.password = password;
+	}
 
 	public Utente(int id, String nome, String cognome, String data_nascita, boolean ruolo_admin,
 			Set<Prenotazione> lista) {

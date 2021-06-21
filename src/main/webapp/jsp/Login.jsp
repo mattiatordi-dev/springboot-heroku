@@ -12,6 +12,14 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <style>
+body{
+background-image: url(img/imgCar.jpg);
+background-repeat: no-repeat;
+background-size:cover;
+background-position: center;
+background-attachment: fixed;
+z-index:0;
+}
 .login-form {
     width: 340px;
     margin: 50px auto;

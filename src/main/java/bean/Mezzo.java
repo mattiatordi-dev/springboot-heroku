@@ -34,6 +34,16 @@ public class Mezzo {
 		super();
 	}
 	
+	public Mezzo(int id,String targa, String modello, String casa_costr, String tipologia, int anno_imm) {
+		super();
+		this.id = id;
+		this.targa = targa;
+		this.modello = modello;
+		this.casa_costr = casa_costr;
+		this.anno_imm = anno_imm;
+		this.tipologia = tipologia;
+	}
+
 	public Mezzo(int id, String targa, String modello, String casa_costr, int anno_imm, String tipologia) {
 		super();
 		this.id = id;

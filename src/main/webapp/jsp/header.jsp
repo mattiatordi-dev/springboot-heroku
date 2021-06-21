@@ -24,10 +24,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="www.google.com">HomePage <span class="sr-only"></span></a>
+        <a class="nav-link" href="http://localhost:8080/Servlet-Jsp-Project/jsp/Homepage.jsp">HomePage <span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Parco auto</a>
+        <a class="nav-link" href="/Servlet-Jsp-Project/ViewCarServlet">Parco auto</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Profilo utente</a>

@@ -2,6 +2,8 @@ package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Dao.LoginDao;
+import Dao.UserDao;
 import bean.Utente;
 
 /**
@@ -44,16 +47,26 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+        boolean role_admin = false;
 		LoginDao dao = new LoginDao();
+		UserDao userDao = new UserDao();
 		Utente admin = dao.findBySurname("tordi");
-		
+		boolean role = dao.findByRoleAdmin("tordi");
+		System.out.println(role);
+		if(role = true) {
+			admin.setRuolo_admin(true);
+		}
+		System.out.println(admin.isRuolo_admin());
 		String user = request.getParameter("username");
 		String pwd = request.getParameter("password");
 		
-		if(admin.getCognome().equalsIgnoreCase(user) && admin.getPassword().equalsIgnoreCase(pwd)){
+		List<Utente> lista = new ArrayList<Utente>();
+		
+		if(admin.getCognome().equalsIgnoreCase(user) && admin.getPassword().equalsIgnoreCase(pwd) && admin.isRuolo_admin()){
 			HttpSession session = request.getSession();
-			response.sendRedirect("/Servlet-Jsp-Project/jsp/header.jsp");
+			lista = userDao.getAllUsers();
+			request.getSession().setAttribute("listaUtenti", lista);
+			response.sendRedirect("/Servlet-Jsp-Project/jsp/Homepage.jsp");
 		}else{
 			request.setAttribute("invalid", "Username o password errati");
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/jsp/Login.jsp");
