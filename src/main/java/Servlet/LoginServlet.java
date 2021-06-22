@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Dao.BookingDao;
 import Dao.LoginDao;
 import Dao.UserDao;
 import bean.Utente;
@@ -50,6 +51,7 @@ public class LoginServlet extends HttpServlet {
         boolean role_admin = false;
 		LoginDao dao = new LoginDao();
 		UserDao userDao = new UserDao();
+		BookingDao bookingDao = new BookingDao();
 		Utente admin = dao.findBySurname("tordi");
 		boolean role = dao.findByRoleAdmin("tordi");
 		System.out.println(role);
@@ -62,12 +64,19 @@ public class LoginServlet extends HttpServlet {
 		
 		List<Utente> lista = new ArrayList<Utente>();
 		
+		Utente u = dao.findBySurname(request.getParameter("username"));
+		
 		if(admin.getCognome().equalsIgnoreCase(user) && admin.getPassword().equalsIgnoreCase(pwd) && admin.isRuolo_admin()){
 			HttpSession session = request.getSession();
 			lista = userDao.getAllUsers();
 			request.getSession().setAttribute("listaUtenti", lista);
 			response.sendRedirect("/Servlet-Jsp-Project/jsp/Homepage.jsp");
-		}else{
+		}else if(u.getCognome().equalsIgnoreCase(request.getParameter("username")) && u.getPassword().equalsIgnoreCase(pwd) && !u.isRuolo_admin()){
+			request.getSession().setAttribute("utente", u);
+			request.getSession().setAttribute("prenotazioni",bookingDao.getBookingUser(u.getId()));
+			request.getRequestDispatcher("/jsp/HomepageCustomer.jsp").forward(request, response);
+		}
+		else{
 			request.setAttribute("invalid", "Username o password errati");
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/jsp/Login.jsp");
 			rd.forward(request, response);

@@ -35,14 +35,14 @@ String data1 = String.valueOf(data);
 
 <div class="card text-center">
   <div class="card-header">
-    PRENOTAZIONE
+    CANCELLAZIONE PRENOTAZIONE
   </div>
   <div class="card-body">
-    <h5 class="card-title">PRENOTAZIONE AVVENUTA CON SUCCESSO</h5>
-    <p class="card-text">${sessionScope.UserRegistered.nome}  ${sessionScope.UserRegistered.cognome}  -  ${sessionScope.AutoRegistered.modello}
-      ${sessionScope.AutoRegistered.targa}
+    <h5 class="card-title">CANCELLAZIONE AVVENUTA CON SUCCESSO</h5>
+    <p class="card-text">${sessionScope.prenotazione.id}  ${sessionScope.prenotazione.utente.cognome}  -  ${sessionScope.prenotazione.mezzo.modello}
+      ${sessionScope.prenotazione.mezzo.targa}
      </p>
-    <a href="http://localhost:8080/Servlet-Jsp-Project/jsp/Homepage.jsp" class="btn btn-primary">Torna alla Homepage</a>
+    <a href="http://localhost:8080/Servlet-Jsp-Project/jsp/HomepageCustomer.jsp" class="btn btn-primary">Torna alla Homepage</a>
   </div>
   <div class="card-footer text-muted">
     <%=data1 %>
