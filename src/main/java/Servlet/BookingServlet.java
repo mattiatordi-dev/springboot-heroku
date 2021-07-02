@@ -35,6 +35,9 @@ public class BookingServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String dataBooking = (String) request.getSession().getAttribute("data");
+		request.getSession().setAttribute("data", dataBooking);
 	
 		UserDao userDao = new UserDao();
 		AutoDao autoDao = new AutoDao();
@@ -51,7 +54,6 @@ public class BookingServlet extends HttpServlet {
         
 		BookingDao bookingDao = new BookingDao();
 		bookingDao.insertBooking(prenotazione);
-		System.out.println("arrivato alla prenotazione");
 		
 		Utente u = userDao.getUser(idUser);
 		Mezzo m = autoDao.getAuto(idAuto);

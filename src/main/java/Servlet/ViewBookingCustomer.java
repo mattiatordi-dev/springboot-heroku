@@ -1,6 +1,8 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,16 +13,16 @@ import Dao.BookingDao;
 import bean.Prenotazione;
 
 /**
- * Servlet implementation class DeleteBookingCustomerServlet
+ * Servlet implementation class ViewBookingCustomer
  */
-@WebServlet("/DeleteBookingCustomerServlet")
-public class DeleteBookingCustomerServlet extends HttpServlet {
+@WebServlet("/ViewBookingCustomer")
+public class ViewBookingCustomer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteBookingCustomerServlet() {
+    public ViewBookingCustomer() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,17 +31,12 @@ public class DeleteBookingCustomerServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		int id = Integer.parseInt(request.getParameter("id"));
-		request.getSession().setAttribute("idUtente", id);			
-		BookingDao bookingDao = new BookingDao();
-		Prenotazione pren =  bookingDao.getFirstBooking(id);
-		request.getSession().setAttribute("prenotazione", pren);
-		int idUtente = pren.getUtente().getId();
-		request.getSession().setAttribute("idUtente", idUtente);
-		bookingDao.deleteBooking(id);
+		BookingDao dao = new BookingDao();
 		
-		request.getRequestDispatcher("jsp/deleteBookingSuccess.jsp").forward(request, response);
+		List<Prenotazione> lista = dao.getAllBookingUser();
+		request.getSession().setAttribute("listaPrenotazioni", lista);
+		
+		request.getRequestDispatcher("jsp/Booking.jsp").forward(request, response);
 		
 	}
 
@@ -48,7 +45,19 @@ public class DeleteBookingCustomerServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		String cognome = request.getParameter("nome");
+		
+        BookingDao dao = new BookingDao();
+		
+		List<Prenotazione> lista = dao.getBookingUserFromName(cognome);
+		request.getSession().setAttribute("listaPrenotazioni", lista);
+		
+		request.getRequestDispatcher("jsp/Booking.jsp").forward(request, response);
+		
+		
+		
+		
 	}
 
 }

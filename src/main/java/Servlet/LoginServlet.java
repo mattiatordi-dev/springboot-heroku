@@ -71,6 +71,10 @@ public class LoginServlet extends HttpServlet {
 			lista = userDao.getAllUsers();
 			request.getSession().setAttribute("listaUtenti", lista);
 			response.sendRedirect("/Servlet-Jsp-Project/jsp/Homepage.jsp");
+		}else if(u == null) {
+			request.setAttribute("invalid", "Username o password errati");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/jsp/Login.jsp");
+			rd.forward(request, response);
 		}else if(u.getCognome().equalsIgnoreCase(request.getParameter("username")) && u.getPassword().equalsIgnoreCase(pwd) && !u.isRuolo_admin()){
 			request.getSession().setAttribute("utente", u);
 			request.getSession().setAttribute("prenotazioni",bookingDao.getBookingUser(u.getId()));

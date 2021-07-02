@@ -52,7 +52,7 @@ request.getSession().setAttribute("utente", u);
         <td>${prenotazione.utente.cognome}</td>
         <td>${prenotazione.mezzo.id}</td>
         <td>${prenotazione.mezzo.modello}</td>
-        <td>${prenotazione.mezzo.casa_costr}</td>
+        <td>${prenotazione.mezzo.getCasa_costr()}</td>
         <td>${prenotazione.mezzo.targa}</td>
             <td><a href="http://localhost:8080/Servlet-Jsp-Project/DeleteBookingCustomerServlet?id=${prenotazione.id}">Cancella prenotazione</a>
             </td>
@@ -60,7 +60,7 @@ request.getSession().setAttribute("utente", u);
 </c:forEach>
      </tbody>
 </table>
-  </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </div>
 </body>
 </html>

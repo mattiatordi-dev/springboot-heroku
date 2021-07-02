@@ -8,19 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Dao.BookingDao;
-import bean.Prenotazione;
 
 /**
- * Servlet implementation class DeleteBookingCustomerServlet
+ * Servlet implementation class AfterDeleteBookingServlet
  */
-@WebServlet("/DeleteBookingCustomerServlet")
-public class DeleteBookingCustomerServlet extends HttpServlet {
+@WebServlet("/AfterDeleteBookingServlet")
+public class AfterDeleteBookingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteBookingCustomerServlet() {
+    public AfterDeleteBookingServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,17 +29,12 @@ public class DeleteBookingCustomerServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int id = Integer.parseInt(request.getParameter("id"));
-		request.getSession().setAttribute("idUtente", id);			
 		BookingDao bookingDao = new BookingDao();
-		Prenotazione pren =  bookingDao.getFirstBooking(id);
-		request.getSession().setAttribute("prenotazione", pren);
-		int idUtente = pren.getUtente().getId();
-		request.getSession().setAttribute("idUtente", idUtente);
-		bookingDao.deleteBooking(id);
 		
-		request.getRequestDispatcher("jsp/deleteBookingSuccess.jsp").forward(request, response);
+		int idUtente = (int) request.getSession().getAttribute("idUser");
+		request.getSession().setAttribute("prenotazioni",bookingDao.getBookingUser(idUtente));
 		
+		request.getRequestDispatcher("/jsp/HomepageCustomer.jsp").forward(request, response);
 	}
 
 	/**

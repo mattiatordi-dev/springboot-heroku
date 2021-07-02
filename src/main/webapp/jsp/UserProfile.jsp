@@ -20,6 +20,9 @@ margin-right:auto;
 .card-title{
 text-align:center;
 }
+.body1{
+background-color: #F0F8FF;
+}
 #myDIV{
 text-align:center;
 margin-left:auto;
@@ -39,7 +42,8 @@ margin-right:auto;
 </style>
 </head>
 <body>
-<jsp:include page="headerCustomer.jsp"/><br>
+<jsp:include page="headerCustomer.jsp"/>
+<div class="body1"><br><br>
 
 <div class="card" style="width: 18rem;">
   <div class="card-body">
@@ -52,7 +56,7 @@ margin-right:auto;
     COGNOME:<b>  ${sessionScope.utente.cognome}</b> 
   </div>
   <div class="card-body">
-    DATA NASCITA: <b>  ${sessionScope.utente.data_nascita}</b>
+    DATA NASCITA: <b>  ${sessionScope.utente.getData_nascita()}</b>
   </div>
   <div class="card-body">
     PASSWORD:  <strong>  ${sessionScope.utente.password}</strong>
@@ -81,7 +85,7 @@ function myFunction() {
     x.style.display = "none";
   }
 }
-</script>
-
+</script><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
 </body>
 </html>

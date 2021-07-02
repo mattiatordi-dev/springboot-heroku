@@ -1,3 +1,4 @@
+<%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
@@ -50,6 +51,8 @@ text-align:center;
 <%
 int idUser = (int) request.getSession().getAttribute("idUser");
 request.getSession().setAttribute("idUser", idUser);
+String date = String.valueOf(LocalDate.now());
+request.getSession().setAttribute("data", date);
 %>
 <h3>AGGIUNGI MEZZO</h3><hr>
 <form method="post">
@@ -75,7 +78,7 @@ request.getSession().setAttribute("idUser", idUser);
   </div> <hr>
   <button type="submit" formaction="/Servlet-Jsp-Project/BookServlet" class="btn btn-primary">Aggiungi</button><br><hr>
   </form>
-<h3>UTENTI REGISTRATI PRESSO LA NOSTRA STRUTTURA </h3><hr>
+<h3>MEZZI REGISTRATI PRESSO LA NOSTRA STRUTTURA </h3><hr>
 <div class="table1">
 <table class="table table-hover">
   <thead>
@@ -92,9 +95,9 @@ request.getSession().setAttribute("idUser", idUser);
    <c:forEach var="auto" items="${sessionScope.listaAuto}">
     <tr>
         <td>${auto.modello}</td>
-        <td>${auto.casa_costr}</td>
+        <td>${auto.getCasa_costr()}</td>
         <td>${auto.targa}</td>
-        <td>${auto.anno_imm}</td>
+        <td>${auto.getAnno_imm()}</td>
         <td>${auto.tipologia}</td>
             <td><a href="http://localhost:8080/Servlet-Jsp-Project/BookingServlet?id=${auto.id}">Prenota mezzo</a>
             </td>

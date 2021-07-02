@@ -14,7 +14,12 @@ public class LoginDao {
 		Query query =  entity.createNativeQuery("SELECT u.id, u.cognome, u.data_nascita, u.nome, u.ruolo_admin,"
 				+ "u.password FROM utente u WHERE u.cognome =:surname",Utente.class);
 		query.setParameter("surname", surname);
-		Utente u = (Utente) query.getSingleResult();
+		Utente u = null;
+		try {
+			u = (Utente) query.getSingleResult();
+		}catch(Exception e){
+			e.getLocalizedMessage();
+		}
 		entity.close();
 		
 		return u;

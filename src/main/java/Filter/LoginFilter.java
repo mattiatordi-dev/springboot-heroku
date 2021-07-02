@@ -63,7 +63,7 @@ public class LoginFilter implements Filter {
 		
 		if(session == null && (uri.endsWith("jsp"))){
 			this.context.log("Non autorizzatp");
-			res.sendRedirect("/Servlet-Jsp-Project/jsp/Login.jsp");
+			res.sendRedirect("/Servlet-Jsp-Project/jsp/");
 		}else{
 			// pass the request along the filter chain
 			chain.doFilter(request, response);

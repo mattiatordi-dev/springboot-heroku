@@ -43,9 +43,11 @@ margin-right:auto;
 h3{
 text-align:center;
 }
-
-
 </style>
+<%
+String dataBooking = (String) request.getSession().getAttribute("data");
+request.getSession().setAttribute("data", dataBooking);
+%>
 </head>
 <body>
 <div class="body1">
@@ -85,7 +87,7 @@ text-align:center;
     <tr>
         <td>${user.id}</td>
         <td>${user.cognome}</td>
-        <td>${user.data_nascita}</td>
+        <td>${user.getData_nascita()}</td>
         <td>${user.nome}</td>
             <td><a href="http://localhost:8080/Servlet-Jsp-Project/BookServlet?id=${user.id}">Prenota mezzo</a>
             </td>

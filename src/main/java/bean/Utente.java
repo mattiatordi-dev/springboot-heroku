@@ -22,8 +22,8 @@ public class Utente {
 	private String nome;
 	@Column
 	private String cognome;
-	@Column
-	private String data_nascita;
+	@Column(name="data_nascita")
+	private String dataNascita;
 	@Column
 	private boolean ruolo_admin;
     @OneToMany(mappedBy="utente", cascade = CascadeType.ALL)
@@ -40,7 +40,7 @@ public class Utente {
 		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
-		this.data_nascita = data_nascita;
+		this.dataNascita = data_nascita;
 	}
 
 	public Utente(int id, String nome, String cognome, String data_nascita, boolean ruolo_admin) {
@@ -48,7 +48,7 @@ public class Utente {
 		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
-		this.data_nascita = data_nascita;
+		this.dataNascita = data_nascita;
 		this.ruolo_admin = ruolo_admin;
 	}
 	
@@ -58,7 +58,7 @@ public class Utente {
 		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
-		this.data_nascita = data_nascita;
+		this.dataNascita = data_nascita;
 		this.password = password;
 	}
 
@@ -67,7 +67,7 @@ public class Utente {
 		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
-		this.data_nascita = data_nascita;
+		this.dataNascita = data_nascita;
 		this.ruolo_admin = ruolo_admin;
 		this.password = password;
 	}
@@ -78,7 +78,7 @@ public class Utente {
 		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
-		this.data_nascita = data_nascita;
+		this.dataNascita = data_nascita;
 		this.ruolo_admin = ruolo_admin;
 		this.lista = lista;
 	}
@@ -108,11 +108,11 @@ public class Utente {
 	}
 
 	public String getData_nascita() {
-		return data_nascita;
+		return dataNascita;
 	}
 
 	public void setData_nascita(String data_nascita) {
-		this.data_nascita = data_nascita;
+		this.dataNascita = data_nascita;
 	}
 
 	public boolean isRuolo_admin() {
@@ -142,7 +142,7 @@ public class Utente {
 
 	@Override
 	public String toString() {
-		return "Utente [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", data_nascita=" + data_nascita
+		return "Utente [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", data_nascita=" + dataNascita
 				+ ", ruolo_admin=" + ruolo_admin + ", password=" + password  + "]";
 	}
 	

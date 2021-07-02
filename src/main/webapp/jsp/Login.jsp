@@ -45,6 +45,7 @@ z-index:0;
 </style>
 </head>
 <body>
+<div class="body1">
 
 <div class="login-form">
     <form action="/Servlet-Jsp-Project/LoginServlet" method="post">
@@ -61,11 +62,18 @@ z-index:0;
         </div>        
     </form>
     <div style="text-align:center"> 
+    <%
+    String invalid = (String) request.getAttribute("invalid"); 
+    if(invalid != null){
+    	%>
+    	<%=invalid%>
+    <% }%>
+    
    
-    <%= request.getAttribute("invalid")%>
     
     </div>
 </div>
+
 
 </body>
 </html>

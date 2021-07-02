@@ -28,6 +28,28 @@ public class BookingDao {
 		return lista;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Prenotazione> getBookingUserFromName(String surname){
+		EntityManager entity = JpaUtil.getEntityManager();
+		Query query = entity.createNativeQuery("SELECT * \r\n"
+				+ "FROM mezzo m, utente u, prenotazione p\r\n"
+				+ "WHERE u.id = p.utente_id and m.id = p.mezzo_id \r\n"
+				+ "and u.cognome =:surname",Prenotazione.class);
+		query.setParameter("surname", surname);
+		List<Prenotazione> lista = query.getResultList();
+		
+		return lista;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Prenotazione> getAllBookingUser(){
+		EntityManager entity = JpaUtil.getEntityManager();
+		Query query = entity.createNativeQuery("SELECT * FROM prenotazione p",Prenotazione.class);
+		List<Prenotazione> lista = query.getResultList();
+		
+		return lista;
+	}
+	
 	public Prenotazione getFirstBooking(int id) {
 		EntityManager entity = JpaUtil.getEntityManager();
 		Query query = entity.createNativeQuery("SELECT * FROM prenotazione p WHERE p.id=:id",Prenotazione.class);

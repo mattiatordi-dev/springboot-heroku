@@ -21,10 +21,10 @@ public class Mezzo {
 	private String targa;
 	@Column
 	private String modello;
-	@Column
-	private String casa_costr;
-	@Column
-	private int anno_imm;
+	@Column(name="casa_costr")
+	private String casaCostr;
+	@Column(name="anno_imm")
+	private int annoImm;
 	@Column(nullable = false)
 	private String tipologia;
 	@OneToMany(mappedBy = "mezzo", cascade = CascadeType.ALL)
@@ -39,8 +39,8 @@ public class Mezzo {
 		this.id = id;
 		this.targa = targa;
 		this.modello = modello;
-		this.casa_costr = casa_costr;
-		this.anno_imm = anno_imm;
+		this.casaCostr = casa_costr;
+		this.annoImm = anno_imm;
 		this.tipologia = tipologia;
 	}
 
@@ -49,8 +49,8 @@ public class Mezzo {
 		this.id = id;
 		this.targa = targa;
 		this.modello = modello;
-		this.casa_costr = casa_costr;
-		this.anno_imm = anno_imm;
+		this.casaCostr = casa_costr;
+		this.annoImm = anno_imm;
 		this.tipologia = tipologia;
 	}
 
@@ -60,8 +60,8 @@ public class Mezzo {
 		this.id = id;
 		this.targa = targa;
 		this.modello = modello;
-		this.casa_costr = casa_costr;
-		this.anno_imm = anno_imm;
+		this.casaCostr = casa_costr;
+		this.annoImm = anno_imm;
 		this.tipologia = tipologia;
 		this.lista = lista;
 	}
@@ -91,19 +91,19 @@ public class Mezzo {
 	}
 
 	public String getCasa_costr() {
-		return casa_costr;
+		return casaCostr;
 	}
 
 	public void setCasa_costr(String casa_costr) {
-		this.casa_costr = casa_costr;
+		this.casaCostr = casa_costr;
 	}
 
 	public int getAnno_imm() {
-		return anno_imm;
+		return annoImm;
 	}
 
 	public void setAnno_imm(int anno_imm) {
-		this.anno_imm = anno_imm;
+		this.annoImm = anno_imm;
 	}
 
 	public String getTipologia() {
@@ -124,8 +124,8 @@ public class Mezzo {
 
 	@Override
 	public String toString() {
-		return "Mezzo [id=" + id + ", targa=" + targa + ", modello=" + modello + ", casa_costr=" + casa_costr
-				+ ", anno_imm=" + anno_imm + ", tipologia=" + tipologia  + "]";
+		return "Mezzo [id=" + id + ", targa=" + targa + ", modello=" + modello + ", casa_costr=" + casaCostr
+				+ ", anno_imm=" + annoImm + ", tipologia=" + tipologia  + "]";
 	}
 	
 	

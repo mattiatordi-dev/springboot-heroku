@@ -26,6 +26,9 @@ margin-right:auto;
 <%
 LocalDate data = LocalDate.now();
 String data1 = String.valueOf(data);
+
+String dataBooking = (String) request.getSession().getAttribute("data");
+request.getSession().setAttribute("data", dataBooking);
 %>
 </head>
 <body>

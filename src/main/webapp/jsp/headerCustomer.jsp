@@ -22,7 +22,7 @@ request.getSession().setAttribute("utente", u);
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="http://localhost:8080/Servlet-Jsp-Project/jsp/HomeCustomer.jsp">RENTAL CAR</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -37,6 +37,9 @@ request.getSession().setAttribute("utente", u);
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/Servlet-Jsp-Project/UserProfileServlet">Profilo utente</a>
+      </li>
+      <li class="nav-item" id="log">
+        <a class="nav-link" href="http://localhost:8080/Servlet-Jsp-Project/jsp/">LOG OUT</a>
       </li>
     </ul>
   </div>

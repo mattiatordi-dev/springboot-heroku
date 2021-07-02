@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@page import="java.time.LocalDate"%>
+    <%@page import="bean.Prenotazione" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +27,9 @@ margin-right:auto;
 <%
 LocalDate data = LocalDate.now();
 String data1 = String.valueOf(data);
+
+int idUtente = (int) request.getSession().getAttribute("idUtente");
+request.getSession().setAttribute("idUser", idUtente);
 %>
 </head>
 <body>
@@ -42,7 +46,7 @@ String data1 = String.valueOf(data);
     <p class="card-text">${sessionScope.prenotazione.id}  ${sessionScope.prenotazione.utente.cognome}  -  ${sessionScope.prenotazione.mezzo.modello}
       ${sessionScope.prenotazione.mezzo.targa}
      </p>
-    <a href="http://localhost:8080/Servlet-Jsp-Project/jsp/HomepageCustomer.jsp" class="btn btn-primary">Torna alla Homepage</a>
+    <a href="http://localhost:8080/Servlet-Jsp-Project/AfterDeleteBookingServlet" class="btn btn-primary">Torna alla Homepage</a>
   </div>
   <div class="card-footer text-muted">
     <%=data1 %>

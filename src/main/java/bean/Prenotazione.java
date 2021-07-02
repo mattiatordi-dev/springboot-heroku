@@ -37,8 +37,8 @@ public class Prenotazione {
     Mezzo mezzo;
     */
 	
-	@Column
-	private int data_prenotazione;
+	@Column(name="data_prenotazione")
+	private int dataPrenotazione;
 	
 	public Prenotazione() {
 		super();
@@ -49,7 +49,7 @@ public class Prenotazione {
 		this.id = id;
 		this.utente = utente;
 		this.mezzo = mezzo;
-		this.data_prenotazione = data_prenotazione;
+		this.dataPrenotazione = data_prenotazione;
 	}
 
 	public int getId() {
@@ -77,17 +77,17 @@ public class Prenotazione {
 	}
 
 	public int getData_prenotazione() {
-		return data_prenotazione;
+		return dataPrenotazione;
 	}
 
 	public void setData_prenotazione(int data_prenotazione) {
-		this.data_prenotazione = data_prenotazione;
+		this.dataPrenotazione = data_prenotazione;
 	}
 
 	@Override
 	public String toString() {
 		return "Prenotazione [id=" + id + ", utente=" + utente + ", mezzo=" + mezzo + ", data_prenotazione="
-				+ data_prenotazione + "]";
+				+ dataPrenotazione + "]";
 	}
 	
 	
