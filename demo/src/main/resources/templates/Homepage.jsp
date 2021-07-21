@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="css/Homepage.css">
     <meta charset="UTF-8">
     <title>Title</title>
   <!-- CSS only -->
@@ -30,13 +31,31 @@
       <li class="nav-item">
         <a class="nav-link" href="/Books">Prenotazioni</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" id="logout" href="/login">Logout</a>
+      </li>
     </ul>
-
   </div>
 </nav>
-<div style="text-align:center; margin-top:15%;">
-  <h1>SEI L'ADMIN DEL NOSTRO RENTAL CAR</h1>
-  <h3>CI FIDIAMO DI TE</h3>
+
+  <h3 class="title-admin">BENVENUTO NOSTRO ADMIN!</h3>
+
+<div class="central">
+  <div class="container text-center">
+    <h1 class="display-1">Desideri un auto da noleggiare?</h1>
+    <div class="shadow-lg p-3 mb-5 bg-transparent rounded">
+      <p class="lead"><b><i><h4>Vieni a scoprire il parco auto di <b>"Rental car ROMA"</b></h4>
+      </i>
+      </b>
+      </p>
+    </div>
+  </div>
+  <div class="loading">
+    <div class="d-flex">
+      <strong>Sito in continuo sviluppo...</strong>
+      <div class="spinner-border ms-5" role="status" aria-hidden="true"></div>
+    </div>
+  </div>
 </div>
 
 

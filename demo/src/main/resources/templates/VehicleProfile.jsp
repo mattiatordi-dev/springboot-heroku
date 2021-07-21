@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
+  <link rel="stylesheet" href="/css/VehicleProfile.css">
   <meta charset="ISO-8859-1">
   <title>Insert title here</title>
   <!-- CSS only -->
@@ -9,34 +9,7 @@
 
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-  <style>
-.card{
-margin-left:auto;
-margin-right:auto;
-}
-.card-title{
-text-align:center;
-}
-.body1{
-background-color: #F0F8FF;
-}
-#myDIV{
-text-align:center;
-margin-left:auto;
-margin-right:auto;
-width:30%;
-display:none;
-}
-.mb-3{
-margin-left:auto;
-margin-right:auto;
-}
-#campo{
-width:40%;
-margin-left:auto;
-margin-right:auto;
-}
-</style>
+
 </head>
 <body><nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Navbar</a>
@@ -47,13 +20,19 @@ margin-right:auto;
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+        <a class="nav-link" href="/showHomepage">Home <span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/Users">Utenti</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/Vehicles">Mezzi</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Books">Prenotazioni</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="logout" href="/login">Logout</a>
       </li>
     </ul>
 

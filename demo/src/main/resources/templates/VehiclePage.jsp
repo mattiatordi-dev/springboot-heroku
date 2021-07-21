@@ -3,7 +3,6 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="css/Utility.css">
-    <link rel="stylesheet" href="css/Users.css">
     <meta charset="UTF-8">
     <title>Title</title>
     <!-- CSS only -->
@@ -16,19 +15,18 @@
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/showHomepageUser">Home <span class="sr-only"></span></a>
+                <a class="nav-link" href="showHomepageUser">Home <span class="sr-only"></span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/showUserPage">Utenti</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/showVehiclesPage">Mezzi</a>
+                <a class="nav-link" href="#">Mezzi</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/showBookingPage">Prenotazioni</a>
@@ -40,35 +38,52 @@
 
     </div>
 </nav><br>
-<h3 style="text-align:center;">LISTA UTENTI</h3><br><br>
-<hr>
+<h3 style="text-align:center;">LISTA VEICOLI</h3><br><hr><br>
 
 <table class="table table-striped" style="width:50%; margin-left:auto; margin-right:auto;">
     <thead>
     <tr>
         <th scope="col">ID</th>
-        <th scope="col">Cognome</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Data di nascita</th>
-        <th scope="col">Admin</th>
+        <th scope="col">Modello</th>
+        <th scope="col">Casa costruttrice</th>
+        <th scope="col">Tipologia</th>
+        <th scope="col">Targa</th>
+        <th scope="col">Anno di immatricolazione</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="pers : ${lista}">
-        <td th:text="${pers.id}"></td>
-        <td th:text="${pers.cognome}"></td>
-        <td th:text="${pers.nome}"></td>
-        <td th:text="${{pers.getData_nascita()}}"></td>
-        <td th:text="${pers.isRuolo_admin()}"></td>
-
+    <tr th:each="auto : ${lista}">
+        <td th:text="${auto.id}"></td>
+        <td th:text="${auto.modello}"></td>
+        <td th:text="${auto.getCasa_costr()}"></td>
+        <td th:text="${auto.tipologia}"></td>
+        <td th:text="${auto.targa}"></td>
+        <td th:text="${auto.getAnno_imm()}"></td>
     </tr>
     </tbody>
 </table><br><hr>
-<div class="divBook">
-<h1>PRENOTA IL TUO MEZZO</h1><br>
-<form th:action="@{/VehiclesUser/{cognome}(cognome = ${cognome})}">
-    <button type="submit" class="btn btn-primary">Prenota</button>
-</form>
-</div>
-</body>
+<br><br>
 
+
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("myDIV");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+    function myFunction1() {
+        var x = document.getElementById("myDIV1");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>

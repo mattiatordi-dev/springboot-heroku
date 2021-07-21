@@ -7,10 +7,13 @@ import com.example.demo.repository.BookingRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.repository.VehiclesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -65,6 +68,58 @@ public class BookingController {
         model.addAttribute("lista", lista);
 
         return "Bookings";
+
+    }
+
+    @GetMapping("/searchBook")
+    public String searchBook(@RequestParam("data")int data, Model model){
+
+        List<Prenotazione> lista = bookingRepository.searchByDate(String.valueOf(data));
+
+        model.addAttribute("lista", lista);
+
+        return "Bookings";
+
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteBooking(@PathVariable("id")int id,Model model){
+
+        Prenotazione p =  bookingRepository.findById(id).get();
+        bookingRepository.delete(p);
+
+        List<Prenotazione> lista = bookingRepository.findAll();
+
+        model.addAttribute("lista", lista);
+
+        return "Bookings";
+
+    }
+
+    @GetMapping("/deleteUser/{id}/user/{utente}")
+    public String deleteBookingUser(@PathVariable("id")int id,
+                                    @PathVariable("utente")String utente,
+                                    Model model){
+
+        Prenotazione p =  bookingRepository.findById(id).get();
+        bookingRepository.delete(p);
+
+        List<Prenotazione> lista = bookingRepository.getPrenFromLastname(utente);
+
+        model.addAttribute("lista", lista);
+
+        return "BookingsUser";
+
+    }
+
+    @GetMapping("/showBookingPage")
+    public String showBookingPage(Authentication authentication, Model model){
+
+        List<Prenotazione> lista = bookingRepository.getPrenFromLastname(authentication.getName());
+
+        model.addAttribute("lista", lista);
+
+        return "BookingsUser";
 
     }
 }

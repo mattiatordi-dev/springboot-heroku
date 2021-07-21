@@ -3,7 +3,6 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="/css/Utility.css">
-  <link rel="stylesheet" href="css/Utility.css">
   <meta charset="UTF-8">
   <title>Title</title>
   <!-- CSS only -->
@@ -21,16 +20,16 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/showHomepage">Home <span class="sr-only"></span></a>
+        <a class="nav-link" href="/showHomepageUser">Home <span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/Users">Utenti</a>
+        <a class="nav-link" href="/showUserPage">Utenti</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/Vehicles">Mezzi</a>
+        <a class="nav-link" href="#">Mezzi</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/Books">Prenotazioni</a>
+        <a class="nav-link" href="/showBookingPage">Prenotazioni</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="logout" href="/login">Logout</a>
@@ -39,14 +38,11 @@
 
   </div>
 </nav><br>
-<h3 style="text-align:center;">LISTA PRENOTAZIONI</h3><br><hr><br>
-<div class="mb-3" style="text-align:center;">
-  <button onclick="myFunction()" type="button" class="btn btn-danger">Ricerca per anno</button><br>
-</div><hr>
-<form th:action="@{/searchBook}" method="get" id="myDIV" style="margin-left:auto; margin-right:auto;text-align:center;width:10%;display:none;">
+<h3 style="text-align:center;">LISTA VEICOLI</h3><br><hr><br>
+<form th:action="@{/searchVehicles}" method="get" id="myDIV" style="margin-left:auto; margin-right:auto;text-align:center;width:20%;display:none;">
   <div class="form-group">
     <label for="exampleInputEmail1">Search</label>
-    <input type="number" style="text-align: center" class="form-control" id="exampleInputEmail1" name="data" aria-describedby="emailHelp" placeholder="Enter an year">
+    <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="Enter name">
   </div><br>
   <button type="submit" class="btn btn-danger">Search</button>
 </form><br>
@@ -55,32 +51,32 @@
   <thead>
   <tr>
     <th scope="col">ID</th>
-    <th scope="col">Cognome</th>
-    <th scope="col">Nome</th>
     <th scope="col">Modello</th>
     <th scope="col">Casa costruttrice</th>
+    <th scope="col">Tipologia</th>
     <th scope="col">Targa</th>
-    <th scope="col">Data prenotazione</th>
+    <th scope="col">Anno di immatricolazione</th>
   </tr>
   </thead>
   <tbody>
-  <tr th:each="pren : ${lista}">
-    <td th:text="${pren.id}"></td>
-    <td th:text="${pren.utente.cognome}"></td>
-    <td th:text="${pren.utente.nome}"></td>
-    <td th:text="${pren.mezzo.modello}"></td>
-    <td th:text="${pren.mezzo.getCasa_costr()}"></td>
-    <td th:text="${pren.mezzo.targa}"></td>
-    <td th:text="${pren.getData_prenotazione()}"></td>
+  <tr th:each="auto : ${lista}">
+    <td th:text="${auto.id}"></td>
+    <td th:text="${auto.modello}"></td>
+    <td th:text="${auto.getCasa_costr()}"></td>
+    <td th:text="${auto.tipologia}"></td>
+    <td th:text="${auto.targa}"></td>
+    <td th:text="${auto.getAnno_imm()}"></td>
+    <div th:if="${cognome != null}">
     <td>
-      <a th:href="@{/delete/{id}(id = ${pren.id})}">
-        Cancella prenotazione
+      <a th:href="@{/bookVehicleUser/{cognome}/vehicle/{targa}(cognome = ${cognome},targa = ${auto.targa})}">
+        <b>Prenota mezzo</b>
       </a>
     </td>
+    </div>
   </tr>
   </tbody>
 </table><br><hr>
-<br>
+
 
 
 

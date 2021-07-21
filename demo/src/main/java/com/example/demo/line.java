@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.model.Prenotazione;
 import com.example.demo.model.Utente;
 import com.example.demo.repository.BookingRepository;
 import com.example.demo.repository.RegisterRepository;
@@ -25,12 +26,18 @@ public class line implements CommandLineRunner {
 @Autowired
 UserRepository userRepository;
 
+@Autowired
+BookingRepository bookingRepository;
+
 
     @Override
     public void run(String... args) throws Exception {
 
+
+
         }
 
         }
+
 
 

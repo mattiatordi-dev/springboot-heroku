@@ -24,7 +24,9 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Configuration
-@EnableGlobalMethodSecurity(securedEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true,
+                            securedEnabled = true,
+                            jsr250Enabled = true)
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 

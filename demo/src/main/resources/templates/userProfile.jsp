@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
+  <link rel="stylesheet" href="/css/userProfile.css">
   <meta charset="ISO-8859-1">
   <title>Insert title here</title>
   <!-- CSS only -->
@@ -9,36 +9,10 @@
 
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-  <style>
-.card{
-margin-left:auto;
-margin-right:auto;
-}
-.card-title{
-text-align:center;
-}
-.body1{
-background-color: #F0F8FF;
-}
-#myDIV{
-text-align:center;
-margin-left:auto;
-margin-right:auto;
-width:30%;
-display:none;
-}
-.mb-3{
-margin-left:auto;
-margin-right:auto;
-}
-#campo{
-width:40%;
-margin-left:auto;
-margin-right:auto;
-}
-</style>
+
 </head>
-<body><nav class="navbar navbar-expand-lg navbar-light bg-light">
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -47,13 +21,19 @@ margin-right:auto;
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+        <a class="nav-link" href="/showHomepage">Home <span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/Users">Utenti</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Mezzi</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Books">Prenotazioni</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="logout" href="/login">Logout</a>
       </li>
     </ul>
 
@@ -80,7 +60,7 @@ margin-right:auto;
   <div id="myDIV">
     <h4></h4>
     <form th:action="@{/makeAdminTrue/{cognome}/valueAdmin/{isAdmin}(cognome = ${cognome},isAdmin = ${isAdmin})}" method="post">
-      <h3>Sei sicuro di voler rendere questo utente un amministratore?</h3><br>
+      <h3>Sei sicuro di voler fare questa operazione?</h3><br>
       <button type="submit" class="btn btn-danger">Si, lo voglio!</button>
     </form>
     </div>
@@ -95,7 +75,7 @@ function myFunction() {
     x.style.display = "none";
   }
 }
-</script><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</script><br>
 </div>
 </body>
 </html>

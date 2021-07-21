@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <link rel="stylesheet" href="css/results.css">
-    <meta charset="UTF-8">
-    <title>Title</title>
+
 </head>
 <body>
-Congratulations!
+<div class="corp">
+    <h1>Congratulazioni! </h1>
+    <h2>Adesso fai parte dei nostri clienti!</h2>
+    <a href="/login">Torna alla pagina di Login</a>
+</div>
 </body>
 </html>

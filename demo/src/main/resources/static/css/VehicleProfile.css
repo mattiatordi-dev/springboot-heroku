@@ -1,0 +1,36 @@
+body{
+    background-image: url("img/infogain_bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.card{
+    margin-left:auto;
+    margin-right:auto;
+}
+.card-title{
+    text-align:center;
+}
+
+#myDIV{
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+    width:30%;
+    display:none;
+}
+.mb-3{
+    margin-left:auto;
+    margin-right:auto;
+}
+#campo{
+    width:40%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#logout{
+    margin-left: 240%;
+}

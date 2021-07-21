@@ -21,16 +21,16 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/showHomepage">Home <span class="sr-only"></span></a>
+        <a class="nav-link" href="/showHomepageUser">Home <span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/Users">Utenti</a>
+        <a class="nav-link" href="/showUserPage">Utenti</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/Vehicles">Mezzi</a>
+        <a class="nav-link" href="/showVehiclesPage">Mezzi</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/Books">Prenotazioni</a>
+        <a class="nav-link" href="/showBookingPage">Prenotazioni</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="logout" href="/login">Logout</a>
@@ -39,10 +39,8 @@
 
   </div>
 </nav><br>
-<h3 style="text-align:center;">LISTA PRENOTAZIONI</h3><br><hr><br>
-<div class="mb-3" style="text-align:center;">
-  <button onclick="myFunction()" type="button" class="btn btn-danger">Ricerca per anno</button><br>
-</div><hr>
+<h3 style="text-align:center;">LISTA PRENOTAZIONI</h3><br><br>
+<hr>
 <form th:action="@{/searchBook}" method="get" id="myDIV" style="margin-left:auto; margin-right:auto;text-align:center;width:10%;display:none;">
   <div class="form-group">
     <label for="exampleInputEmail1">Search</label>
@@ -73,7 +71,7 @@
     <td th:text="${pren.mezzo.targa}"></td>
     <td th:text="${pren.getData_prenotazione()}"></td>
     <td>
-      <a th:href="@{/delete/{id}(id = ${pren.id})}">
+      <a th:href="@{/deleteUser/{id}/user/{utente}(id = ${pren.id},utente = ${pren.utente.cognome})}">
         Cancella prenotazione
       </a>
     </td>

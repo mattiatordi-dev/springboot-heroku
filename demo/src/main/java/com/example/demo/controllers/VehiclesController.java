@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 import com.example.demo.model.Mezzo;
 import com.example.demo.model.Prenotazione;
 import com.example.demo.model.Utente;
+import com.example.demo.repository.BookingRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.repository.VehiclesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class VehiclesController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    BookingRepository bookingRepository;
+
 
     @GetMapping(value = "/Vehicles")
     public String showVehiclesDB(Model model){
@@ -41,7 +45,7 @@ public class VehiclesController {
         List<Mezzo> lista = Collections.singletonList(vehiclesRepository.findByModello(nome));
         model.addAttribute("lista", lista);
 
-        return "Users";
+        return "UsersAdmin";
     }
 
     @GetMapping(value = "/modified/{targa}")
@@ -79,6 +83,45 @@ public class VehiclesController {
 
         return "Vehicles";
 
+    }
+
+    @GetMapping("/VehiclesUser/{cognome}")
+    public String bookUser(@PathVariable("cognome")String cognome,Model model){
+
+        model.addAttribute("cognome",cognome);
+
+        List<Mezzo> lista = vehiclesRepository.findAll();
+        model.addAttribute("lista", lista);
+
+        return "VehiclesUser";
+    }
+
+    @GetMapping("/bookVehicleUser/{cognome}/vehicle/{targa}")
+    public String bookUserVehicle(@PathVariable("cognome")String cognome,
+                                  @PathVariable("targa")String targa,
+                                  Model model){
+
+
+        Mezzo mezzo = vehiclesRepository.findByTarga(targa);
+        Utente utente = userRepository.findByCognome(cognome);
+
+        Prenotazione pren = new Prenotazione(0,utente,mezzo, LocalDate.now());
+
+        bookingRepository.save(pren);
+
+        List<Prenotazione> lista = bookingRepository.getPrenFromLastname(cognome);
+        model.addAttribute("lista", lista);
+
+        return "BookingsUser";
+    }
+
+    @GetMapping("showVehiclesPage")
+    public String showVehiclePage(Model model){
+
+        List<Mezzo> lista = vehiclesRepository.findAll();
+        model.addAttribute("lista", lista);
+
+        return "VehiclePage";
     }
 
 }

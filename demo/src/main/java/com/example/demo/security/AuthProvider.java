@@ -60,16 +60,27 @@ public class AuthProvider implements AuthenticationProvider {
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
         authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
-        if(!authenticatedUser.isRuolo_admin()) {
-            UserDetails user = new User(authenticatedUser.getCognome(), authenticatedUser.getPassword(), authorities);
+        List<GrantedAuthority> authoritiesAdmin = new ArrayList<GrantedAuthority>();
+        authoritiesAdmin.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        authoritiesAdmin.add(new SimpleGrantedAuthority("ROLE_USER"));
 
-            //
+        if (authenticatedUser != null && password.equals(authenticatedUser.getPassword())) {
+            UserDetails user  = new User(authenticatedUser.getCognome(), authenticatedUser.getPassword(), authorities);
 
-            if (password.equals(user.getPassword())) {
-                authentication = new UsernamePasswordAuthenticationToken(user, null, authorities);
+            if (!authenticatedUser.isRuolo_admin()) {
+                authentication = new UsernamePasswordAuthenticationToken(user,null, authorities);
+            }
 
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-            } else return retVal;
+            else if(authenticatedUser.isRuolo_admin()){
+                authentication = new UsernamePasswordAuthenticationToken(user,null, authoritiesAdmin);
+            }
+
+            else return retVal;
+
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+
+
+
 
             _logger.info("Utente autenticato:  " + authentication);
 

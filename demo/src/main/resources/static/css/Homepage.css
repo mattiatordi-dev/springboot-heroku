@@ -1,0 +1,32 @@
+body{
+    background-image: url("img/rental-car.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.central{
+    margin-top: 2%;
+}
+
+.loading{
+   margin-left: 46%;
+}
+
+.display-1{
+    text-shadow: 3px 6px 4px;
+}
+
+.title-admin{
+    text-align: center;
+    margin-top: 3%;
+}
+.userWelcome{
+    text-align: center;
+    margin-top: 3%;
+}
+
+#logout{
+    margin-left: 240%;
+}

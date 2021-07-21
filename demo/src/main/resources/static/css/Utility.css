@@ -1,0 +1,15 @@
+body{
+    background-image: url("img/infogain_bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#logout{
+    margin-left: 240%;
+}
+
+.body1{
+    background-image: url("img/infogain_bg.png");
+}

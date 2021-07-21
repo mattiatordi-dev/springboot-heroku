@@ -10,11 +10,11 @@ public class Prenotazione {
     @Id
     int id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "utente_id")
     Utente utente;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "mezzo_id")
     Mezzo mezzo;
 
