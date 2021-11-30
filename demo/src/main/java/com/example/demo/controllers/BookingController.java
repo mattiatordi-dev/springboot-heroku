@@ -8,7 +8,6 @@ import com.example.demo.repository.UserRepository;
 import com.example.demo.repository.VehiclesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -32,7 +32,7 @@ public class BookingController {
 
     @GetMapping("/Books")
     public String showBooking(Model model){
-        List<Prenotazione> lista = bookingRepository.findAll();
+        ArrayList<Prenotazione> lista = (ArrayList<Prenotazione>) bookingRepository.findAll();
 
         model.addAttribute("lista", lista);
 

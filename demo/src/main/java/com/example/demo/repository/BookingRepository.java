@@ -1,6 +1,7 @@
 package com.example.demo.repository;
 
 import com.example.demo.model.Prenotazione;
+import com.example.demo.model.Utente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -26,6 +27,7 @@ public interface BookingRepository extends JpaRepository<Prenotazione, Integer> 
             " WHERE p.utente_id = u.id and p.mezzo_id = m.id" +
             " and u.cognome = :cognome ",nativeQuery = true)
     List<Prenotazione> getPrenFromLastname(String cognome);
+
 
 
 }
